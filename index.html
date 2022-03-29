@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Web Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+      body {
+    background-color: #6e7479;
+}
+.container {
+    width: 300px;
+    background: #6e7479;
+    border-radius: 5px;
+    box-shadow: 0 15px 50px 0 rgba(0,0,0,0.4), 0 15px 20px 0 rgba(0,0,0,0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding: 10px;
+}
+.heading {
+    text-align: left;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 10px 0 0 10px;
+}
+.resultscreen {
+    height: 110px;
+    width: 100%;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #6e7479;
+
+}
+input[type='text'] {
+    width: 300px;
+    padding-right: 10px;
+    position: absolute;
+    bottom: 0;
+    border: none;
+    text-align: right;
+    font-size: 40px;
+    color: #000000;
+    background: #fff;
+    margin-bottom: 10px;
+}
+.line {
+    width: 300px;
+}
+input[type='button'] {
+    float: left;
+    font-size: 24px;
+    line-height: 70px;
+    margin: 1;
+    width: 73px;
+    height: 70px;
+    border: none;
+    color: #fafafa;
+    cursor: pointer;
+    outline: none;
+    background: #2d2d2d;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+}
+input[type='button'][value='0'] {
+    border-bottom-left-radius: 5px;
+}
+input[type='button'][value='='] {
+    background: #2d2d2d;
+    color: #ffffff;
+    border-bottom-right-radius: 5px;
+    width: 147px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form name="calculator">
+            <div class="resultscreen">
+                <div class="heading">Calculator</div>
+                <input type="text" name="evalresult" placeholder="0"/>
+            </div>
+            <div class="buttons">
+                <div class="line">
+                    <input type="button" value="C" onClick="clean()"/>
+                    <input type="button" value="Del" onClick="back()"/>
+                    <input type="button" value="%" onClick="valuecal('%')"/>
+                    <input type="button" value="/" onClick="valuecal('/')"/>
+                </div>
+                
+                <div class="line">
+                    <input type="button" value="7" onclick="valuecal(7)"/>
+                    <input type="button" value="8" onclick="valuecal(8)"/>
+                    <input type="button" value="9" onclick="valuecal(9)"/>
+                    <input type="button" value="*" onClick="valuecal('*')"/>
+                </div>
+
+                <div class="line">
+                    <input type="button" value="4" onclick="valuecal(4)"/>
+                    <input type="button" value="5" onclick="valuecal(5)"/>
+                    <input type="button" value="6" onclick="valuecal(6)"/>
+                    <input type="button" value="-" onClick="valuecal('-')"/>
+                </div>
+                
+                <div class="line">
+                    <input type="button" value="1" onclick="valuecal(1)"/>
+                    <input type="button" value="2" onclick="valuecal(2)"/>
+                    <input type="button" value="3" onclick="valuecal(3)"/>
+                    <input type="button" value="+" onClick="valuecal('+')"/>
+                </div>
+                
+                <div class="line">
+                    <input type="button" value="0" onclick="valuecal(0)"/>
+                    <input type="button" value="." onclick="valuecal('.')"/>
+                    <input type="button" value="=" onclick="equal()"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    function valuecal(num){
+          calculator.evalresult.value = calculator.evalresult.value + num
+          console.log(calculator.evalresult.value)
+     }
+
+     function equal(){
+          calculator.evalresult.value = eval(calculator.evalresult.value)
+     }
+
+     function clean(){ 
+          calculator.evalresult.value = ""
+     }
+
+     function back(){ 
+          calculator.evalresult.value = calculator.evalresult.value.substring(0, calculator.evalresult.value.length -1)
+     }
+    </script>
+</body>
+</html>
